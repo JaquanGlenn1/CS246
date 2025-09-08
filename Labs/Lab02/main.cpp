@@ -37,3 +37,6 @@ int main() {
   valptr = vals;
   printArray(vals, 4);
 }
+
+// task 3
+
