@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// JS Task 1
 int main() {
 
   int x = 35;
@@ -80,6 +81,7 @@ int main() {
 #include <iostream>
 using namespace std;
 
+// JS Task 4
 int* Join(int a1[], int n1, int a2[], int n2) {
     int* a = new int[n1 + n2];
 
@@ -125,6 +127,7 @@ void printArray(int arr[], int size) {
     cout << endl;
 }
 
+// JS Task 3
 int* getScores(int& size) {
     cout << "Enter number of scores: ";
     cin >> size;
@@ -148,6 +151,7 @@ int* Join(int a1[], int n1, int a2[], int n2) {
     return a;
 }
 
+// JS Task 5
 int main() {
     PointerExample();
 
@@ -167,3 +171,13 @@ int main() {
 
     return 0;
 }
+
+/*  JS 7.8/10
+    Task 1: 1.8/2
+    Task 2: 2/2
+    Task 3: 2/2
+    Task 4: 2/2
+    Task 5: 2/2
+
+    Overall: -2 (Used multiple mains, and included iostream multiple times. Repeated many functions)
+*/
