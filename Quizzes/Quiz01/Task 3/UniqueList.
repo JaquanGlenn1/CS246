@@ -1,0 +1,124 @@
+#ifndef UNIQUELIST_H
+#define UNIQUELIST_H
+
+#include "object.h"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <sstream>
+#include <string>
+
+namespace dsq {
+
+class UniqueList : public Object {
+private:
+  int *arr;
+  int capacity;
+  int size;
+
+  void resize() {
+    int newCapacity = capacity * 2;
+    int *newArr = new int[newCapacity];
+    for (int i = 0; i < size; i++) {
+      newArr[i] = arr[i];
+    }
+    delete[] arr;
+    arr = newArr;
+    capacity = newCapacity;
+  }
+
+public:
+  UniqueList(int c) {
+    capacity = c;
+    size = 0;
+    arr = new int[capacity];
+  }
+
+  UniqueList() {
+    capacity = 100;
+    size = 0;
+    arr = new int[capacity];
+  }
+
+  UniqueList(const UniqueList &other) {
+    capacity = other.capacity;
+    size = other.size;
+    arr = new int[capacity];
+    for (int i = 0; i < size; i++) {
+      arr[i] = other.arr[i];
+    }
+  }
+
+  UniqueList &operator=(const UniqueList &other) {
+    if (this != &other) {
+      int *newArr = new int[other.capacity];
+      for (int i = 0; i < other.size; ++i) {
+        newArr[i] = other.arr[i];
+      }
+      delete[] arr;
+      arr = newArr;
+      capacity = other.capacity;
+      size = other.size;
+    }
+    return *this;
+  }
+
+  ~UniqueList() { delete[] arr; }
+
+  int getSize() const { return size; }
+  int getCapacity() const { return capacity; }
+
+  bool contains(int value) const {
+    for (int i = 0; i < size; i++) {
+      if (arr[i] == value)
+        return true;
+    }
+    return false;
+  }
+
+  void insert(int value) {
+    if (!contains(value)) {
+      if (size == capacity)
+        resize();
+      arr[size] = value;
+      size++;
+    }
+  }
+
+  bool remove(int value) {
+    for (int i = 0; i < size; i++) {
+      if (arr[i] == value) {
+        for (int j = i; j < size - 1; j++) {
+          arr[j] = arr[j + 1];
+        }
+        size--;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  std::string toString() const override {
+    std::ostringstream out;
+    out << "[";
+    for (int i = 0; i < size; i++) {
+      out << arr[i];
+      if (i < size - 1)
+        out << ",";
+    }
+    out << "]";
+    return out.str();
+  }
+
+  bool operator==(const UniqueList &other) const {
+    if (size != other.size)
+      return false;
+    for (int i = 0; i < size; i++) {
+      if (!other.contains(arr[i]))
+        return false;
+    }
+    return true;
+  }
+};
+}
+#endif
