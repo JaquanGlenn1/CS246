@@ -49,3 +49,12 @@ int main() {
 
     return 0;
 }
+
+/*  JS
+    Function 1: 0/3.0
+    Function 2: 0/3.0
+    Function 3: 3.0/3.0
+    main: 1.0/1.0
+    Total: 4.0/10.0
+
+*/
