@@ -1,0 +1,18 @@
+Task 1: 18/20
+        -2 Util.h should be in Quiz01/
+
+Task 2: 18/20
+        -2 Object.h should be in Quiz01/
+
+Task 3: 37/40
+        -0.25 file name should be UniqueList.h
+        -2 file should be in Quiz01/
+        -0.25 #include "Object.h" not "object.h"
+        -0.25 the default constructor should use constructor delegation.
+        -0.25 remove() however accurate, does not assign the last element in the array to the removed element's position.
+
+Task 4: 17.75/20
+        -2 file should be in Quiz01/
+        -0.25 #include "UniqueList.h" not "UniqueList.H"
+
+Total: 90.75/100
